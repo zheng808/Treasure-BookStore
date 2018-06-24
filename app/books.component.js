@@ -27,12 +27,10 @@ var BooksComponent = (function () {
     //delete the corresponding book
     BooksComponent.prototype.deleteBook = function (event) {
         //getting id from the delete button
-        //var value = $(this.id);
-        //console.log(value);
-        //remove the corresponding book
         var target = event.target || event.srcElement || event.currentTarget;
         var idAttr = target.attributes.id;
         var value = idAttr.nodeValue;
+        //remove the corresponding book
         $("#" + value).remove();
     };
     //search the book name
