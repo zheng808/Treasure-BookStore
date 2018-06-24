@@ -23,8 +23,6 @@ export class BookDetailsComponent implements OnInit{
             let book = this.bookservice.getBook(this.id)
             .then(res => {  
                 this.book= res.json() ; 
-            }).catch(x=>{ 
-                console.log("error"); 
             });
       });
  

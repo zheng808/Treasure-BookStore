@@ -25,13 +25,14 @@ var BooksComponent = (function () {
         });
     };
     //delete the corresponding book
-    BooksComponent.prototype.deleteBook = function (id) {
+    BooksComponent.prototype.deleteBook = function (event) {
         //getting id from the delete button
+        //var value = $(this.id);
+        //console.log(value);
+        //remove the corresponding book
         var target = event.target || event.srcElement || event.currentTarget;
         var idAttr = target.attributes.id;
         var value = idAttr.nodeValue;
-        console.log(value);
-        //remove the corresponding book
         $("#" + value).remove();
     };
     //search the book name
@@ -40,7 +41,6 @@ var BooksComponent = (function () {
         //call the getBooks from service
         this.bookService.getBooks(this.searchTerm).toPromise().then(function (res) {
             _this.books = res.json().items;
-            console.log(_this.books);
         }).catch(function (x) {
             console.log("api failed");
         });
@@ -54,19 +54,22 @@ var BooksComponent = (function () {
             //display the search dropdown list
             $("#searchdropdown").show();
             $("#addInputfield").hide();
-            for (var i = 0; i < _this.addedBooks.length; i++) {
-                if (_this.addedBooks[i].volumeInfo.title != null) {
-                    dropdown.append('<option></option>');
-                }
-            }
         }).catch(function (x) {
             console.log("api failed");
         });
     };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], BooksComponent.prototype, "searchTerm", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], BooksComponent.prototype, "addTerm", void 0);
     BooksComponent = __decorate([
         core_1.Component({
             selector: 'books',
-            templateUrl: '/app/view/books.component.html',
+            templateUrl: '/app/view/booklist.html',
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [book_service_1.BookService]
         }), 

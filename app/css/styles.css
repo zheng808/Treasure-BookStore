@@ -12,3 +12,7 @@ h1 {
 #searchdropdown{
     display: none;
 }
+
+h4{
+    float: right;
+}

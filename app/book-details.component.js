@@ -24,8 +24,6 @@ var BookDetailsComponent = (function () {
             var book = _this.bookservice.getBook(_this.id)
                 .then(function (res) {
                 _this.book = res.json();
-            }).catch(function (x) {
-                console.log("error");
             });
         });
     };
