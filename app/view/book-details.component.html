@@ -1,6 +1,5 @@
-
-<div class="container" *ngIf="book">
-   
+<h3>Book Details</h3>
+<div class="container" *ngIf="book">   
     <div class="row">
         <div class="col-md-4 margin-top-8">
             <img src = '{{book.volumeInfo.imageLinks.small}}'/> 
@@ -12,18 +11,28 @@
                </div>
             </div>
             <div class="row"> 
-               <div class="col-md-2">Author:</div>
-               <div class="col-md-10">
+               <div class="col-md-1">Author:</div>
+               <div class="col-md-11">
                    <span *ngFor="let author of book.volumeInfo.authors">{{author}}</span> 
                </div>
             </div>
             <div class="row"> 
-               <div class="col-md-2">Publisher:</div>
-               <div class="col-md-10">{{book.volumeInfo.publisher}}</div>
+               <div class="col-md-1">Publisher:</div>
+               <div class="col-md-11">{{book.volumeInfo.publisher}}</div>
+            </div>
+            <div class="row"> 
+               <div class="col-md-1">iSBN:</div>
+               <div class="col-md-11">{{book.volumeInfo.industryIdentifiers[0].identifier}}</div>
             </div>
             <div class="row"> 
                     <div class="col-md-12">{{book.volumeInfo.description}} </div> 
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+             <h3>Price:</h3>
+             <h4></h4>
         </div>
     </div>
 </div> 

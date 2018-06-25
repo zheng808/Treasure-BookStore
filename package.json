@@ -3,18 +3,14 @@
   "version": "1.0.0",
   "license": "ISC",
   "scripts": {
-    "ng":"ng",
-    "start": "node server.js",
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
     "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "typings": "typings",
-    "postinstall": "ng build --aot --target=production"
+    "typings": "typings"
   },
   "dependencies": {
-    "@angular/cli": "1.2.3",
-    "@angular/compiler-cli": "^4.0.0",
     "@angular/common": "2.0.0-rc.4",
     "@angular/compiler": "2.0.0-rc.4",
     "@angular/core": "2.0.0-rc.4",
@@ -33,11 +29,12 @@
     "rxjs": "5.0.0-beta.6",
     "systemjs": "0.19.27",
     "zone.js": "^0.6.12",
-    "typescript": "^1.8.10"
+    "@angular/cli": "1.2.3"
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
     "lite-server": "^2.2.0",
+    "typescript": "^1.8.10",
     "typings": "^1.0.4"
   },
   "engines": {

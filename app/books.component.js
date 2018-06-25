@@ -20,6 +20,20 @@ var BooksComponent = (function () {
         var _this = this;
         this.bookService.getBooks().toPromise().then(function (res) {
             _this.books = res.json().items;
+            console.log(_this.books);
+        }).catch(function (x) {
+            console.log("api failed");
+        });
+    };
+    //add the searched books from dropdown
+    BooksComponent.prototype.addBook = function () {
+        var _this = this;
+        this.bookService.getBooks(this.addTerm).toPromise().then(function (res) {
+            _this.addedBooks = res.json().items;
+            console.log(_this.addedBooks);
+            //display the search dropdown list
+            $("#searchdropdown").show();
+            $("#addInputfield").hide();
         }).catch(function (x) {
             console.log("api failed");
         });
@@ -43,18 +57,14 @@ var BooksComponent = (function () {
             console.log("api failed");
         });
     };
-    //add the searched books from dropdown
-    BooksComponent.prototype.addBook = function () {
-        var _this = this;
-        this.bookService.getBooks(this.addTerm).toPromise().then(function (res) {
-            _this.addedBooks = res.json().items;
-            console.log(_this.addedBooks);
-            //display the search dropdown list
-            $("#searchdropdown").show();
-            $("#addInputfield").hide();
-        }).catch(function (x) {
-            console.log("api failed");
-        });
+    //incremeting the like count for each book
+    BooksComponent.prototype.incrementLike = function (event) {
+        var target = event.target || event.srcElement || event.currentTarget;
+        var idAttr = target.attributes.id;
+        var value = idAttr.nodeValue;
+        var count = parseInt($("#" + value + " #countnumber").html());
+        console.log(count);
+        $("#" + value + " #countnumber").html(count + 1);
     };
     __decorate([
         core_1.Input(), 

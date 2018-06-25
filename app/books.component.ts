@@ -30,10 +30,26 @@ export class BooksComponent implements OnInit {
     //populate the list from service
     ngOnInit(){
         this.bookService.getBooks().toPromise().then(res=>{
-            this.books= res.json().items;  
+            this.books= res.json().items; 
+            console.log(this.books);
         }).catch(x=>{ 
             console.log("api failed"); 
         });
+    }
+    
+        
+    //add the searched books from dropdown
+    addBook(){
+        this.bookService.getBooks(this.addTerm).toPromise().then(res=>{
+                this.addedBooks=res.json().items; 
+                console.log(this.addedBooks);
+            //display the search dropdown list
+            $("#searchdropdown").show();
+            $("#addInputfield").hide();
+         
+            }).catch(x=>{ 
+                console.log("api failed"); 
+            });
     }
     
     //delete the corresponding book
@@ -57,18 +73,15 @@ export class BooksComponent implements OnInit {
             });
     }
     
-    //add the searched books from dropdown
-    addBook(){
-        this.bookService.getBooks(this.addTerm).toPromise().then(res=>{
-                this.addedBooks=res.json().items; 
-                console.log(this.addedBooks);
-            //display the search dropdown list
-            $("#searchdropdown").show();
-            $("#addInputfield").hide();
-         
-            }).catch(x=>{ 
-                console.log("api failed"); 
-            });
+    //incremeting the like count for each book
+    incrementLike(event){
+         var target = event.target || event.srcElement || event.currentTarget;
+         var idAttr = target.attributes.id;
+         var value = idAttr.nodeValue;
+         var count = parseInt($("#" + value + " #countnumber").html());
+         console.log(count);
+         $("#" + value + " #countnumber").html(count+1);
     }
+
 }
 
