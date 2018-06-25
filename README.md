@@ -10,12 +10,11 @@ If node modules does not exist, run "npm install"
 
 then run "npm start or npm run lite"
 
-# Finish Functionalities
+# Finished Functionalities
 Users can view the existing booklist, search books, like books, and update the booklist entry according to the book title. 
 
 # Missing Functionalities:
 Employees Login (authentication). Better to have a back-end PHP support to do this one. 
-
 
 
 # Deployment Issues
@@ -40,3 +39,4 @@ upgrade your angular version, e.g. by running:
 The issue is that my package json has old Angular core dependency. I try to update the latest dependency, however, my app will crash becuase of app.routes.ts has used the old routing dependency. 
 
 Also I have tried to deploy the app to unix.uvic.ca which is our school server by using FTP. However, Angluar needs to be deployed in mode of Angular-cli app. My machine has troubles setting that up.
+
